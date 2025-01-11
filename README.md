@@ -1,7 +1,7 @@
 # Predicting Credit Card Fraud with imbalaned data using Machine Learning
 
 ## 1. Abstract
-Credit card fraud is a major concern for both financial institutions and consumers worldwide, resulting in significant economic losses. In this study, we propose a predictive model to detect fraudulent transactions based on a large set of transaction data. The dataset includes features such as transaction amount, transaction time, and customer and merchant demographics, and is used to build a machine learning model aimed at distinguishing between geniune and fraudulent transactions.
+Credit card fraud is a major concern for both financial institutions and consumers worldwide, resulting in significant economic losses. In this study, we propose a predictive model to detect fraudulent transactions. The dataset includes features such as transaction amount, transaction time, and customer and merchant demographics, and is used to build a machine learning model aimed at distinguishing between geniune and fraudulent transactions.
 Models implemented to achieve this include Random Forest, with multiple resampling techniques due to imbalanced data.
 
 ## 2. Introduction
@@ -18,49 +18,53 @@ The data contains 22 columns and 194,501 rows. It is a simulated credit card tra
 
 ### 4.1 Importing Libraries and Data
 
-Data and necessary libraries were imported. A custom function was created to show the missing data, number of unique values, and the data type for each feature in our dataframe
+Data and necessary libraries were imported. 
 
-### 4.2 Data Exploration
+### 4.2 Exploratory Data Analysis (EDA)
+#### 4.2.1 Data Description
+A custom function was created to show the missing data, number of unique values, and the data type for each feature in our dataframe
 
-#### Formatting features
-* Converted features with a $ and % sign to numeric
-* Converted date features
-* Transformed binary features to boolean for future use
-* In preperation for dummy variables categorical values that have a disproportionate value counts were removed
+#### 4.2.2 Data Balance Check
+Since the target variable () is binary a balance check was performed using a pie chart showing significant imbalance with only 0.6% of fraudulent cases
 
-#### Data Cleaning
-##### Missing data
-* Removed features that have more than 75% missing data since imputation will not help it of any significance in our model.
-* Imputation was performed for the rest of the features with missing data
+#### 4.2.3 Fraud by Transaction Category
+Fraud was plotted against transacation category/type
 
-#### Dummy Variables
-Dummy variables were created and concatenated to the numeric columns of the dataframe
+### 4.3 Data Pre-processing
+#### 4.3.1. Dropping duplicated values
 
-### 4.3 Feature Selection
-#### Finding collinearity and removing redundancies within features
-#### Determing multicollinearity Check with Variance Inflation Factor(VIF)
-#### Calculating Gini's importance
-#### Principal Component Analysis
-#### Scaling Data
+#### 4.3.2 Transforming Variables
 
-### 4.4 Building the machine learning model
-Built a model of various algorithms that
-* Fitted the model first
-* Calculate and print the evaluation metrics
-* Produced train and test error, with the trained model name with y_predict to then calculate these metrics for all of the models at once.
+#### 4.3.3 Dummy Variables
+Categorical data and their number of unique values were used to determine which we should retain for dummy variables. These were then created and concatenated to the numerical features creating a new dataframe
 
-Regression models Ridge, Decision Tree, RandomForest, XGBoost, LGBM, and MLP were used.
+#### 4.3.4 Stratified Train/Test split
+Generated a training/validation dataset split that ensured to keep the same percentages of classes in each split.
+#### 4.3.5 Feature Scaling
+Ensuring that all features in a dataset are on a similar scale
 
-Scalers Standard, MinMax, and no scale were used
+### 5. Baseline Model (no imbalance resampling)
+The first model was performed with no intervention to alleviate the data imbalance. This gave a baseline to measure all other models performed with imbalance techiques against.
+### 5.1 Random Forest
+Random forest was chosen as the primary modeling technique in this case due to the its robustness with imbalanced datasets
+### 6. Random Resampling Methods for Imbalanced Data
+#### 6.1 Random Oversampling
+The first method used for imabalanced datasets was Random Oversampling which duplicates minority class examples to balance out a dataset
+#### 6.2 Random Undersampling
+This technique randomly removed samples from the majority class 
+#### 6.3 SMOTE (Synthetic Minority Oversampling)
+SMOTE was also implemented which created a synthetic data to balance the distribution of classes in a dataset
+#### 6.4 Tomek & SMOTE
+When combined Tomek and SMOTE creates a synythetic dataset and removes noisy majority class data points located close to the minority class boundary, effectively improving class separation and balancing the data distribution
+#### 6.5 Performance Summary
+![image](https://github.com/user-attachments/assets/481667ff-d6cf-497f-bb54-8cbb79e1b8f3)
+The recall (indicating how well a model identifies all relevant positive instances within a dataset) showed that Random Undersampling performed the best although it did suffer in the F1 score
 
-Different sets of features were created: full dataset, 40, 20, and 10. Where the selection was made according to Gini's index.
-
-### 4.5 Results
-To compare predictions with original values and calculate them between them, three for loops were used inside each other taking values from the dictionaries created, then calculating the RMSE for each of our models
-
-The best performing model was Ridge	regression with 40 selected features (using Gini's importance) with a scaling method of MinMax. It had a RMSE of 6.697556.
+### 7. Applying best model
+#### 7.1.2 Print the predicted and actual class names
+Class (No Fraud or Fraud) were printed using Random Undersampling
 
 ### 4.6 Conclusion
-This study demonstrates the potential of machine learning to predict Airbnb guest ratings with a relatively high degree of accuracy. The findings highlight the importance of factors such as features such as number of previous reviews, number of rooms available, cleaning fee, price, location, availability in determining guest satisfaction. By leveraging predictive models, both hosts and platform managers can gain valuable insights into the factors driving guest ratings, helping them improve their offerings and enhance user experiences.
+This project sought out to use the best machine learning-based approach to predict fraudulent credit card transactions using transaction data. The findings show that Random Undersampling predicted fraudulent credit card transacations at a 95.82% accuracy rate. By leveraging predictive models, both customers and credit card companies can gain valuable insights into the factors driving fraudulent transacation protecting customers.
 
-Future research could extend this work by incorporating the text based data such as description of the stay, summary etc using natural language processing to gain insight on top phrases/words used in negative or positive reviews. Exploring more advanced machine learning techniques like deep learning models should also be considered
+Future research could extend this work by using richer datasets from more timeframes and locations. Exploring more advanced machine learning techniques like deep learning models should also be considered.
