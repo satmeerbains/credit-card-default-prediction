@@ -1,4 +1,4 @@
-# Predicting Credit Card Fraud with imbalaned data using Machine Learning
+# Predicting Credit Card Fraud with imbalanced data using Machine Learning
 
 ## 1. Abstract
 Credit card fraud is a major concern for both financial institutions and consumers worldwide, resulting in significant economic losses. In this study, we propose a predictive model to detect fraudulent transactions. The dataset includes features such as transaction amount, transaction time, and customer and merchant demographics, and is used to build a machine learning model aimed at distinguishing between geniune and fraudulent transactions.
