@@ -64,7 +64,7 @@ The recall (indicating how well a model identifies all relevant positive instanc
 #### 7.1.2 Print the predicted and actual class names
 Class (No Fraud or Fraud) were printed using Random Undersampling
 
-### 4.6 Conclusion
-This project sought out to use the best machine learning-based approach to predict fraudulent credit card transactions using transaction data. The findings show that Random Undersampling predicted fraudulent credit card transacations at a 95.82% accuracy rate. By leveraging predictive models, both customers and credit card companies can gain valuable insights into the factors driving fraudulent transacation protecting customers.
+### 8. Conclusion
+This project sought out to use the best machine learning-based approach to predict fraudulent credit card transactions. The findings show that Random Undersampling predicted fraudulent credit card transacations at a 95.82% accuracy rate. By leveraging predictive models, both customers and credit card companies can gain valuable insights into the factors driving fraudulent transacation protecting customers.
 
 Future research could extend this work by using richer datasets from more timeframes and locations. Exploring more advanced machine learning techniques like deep learning models should also be considered.
