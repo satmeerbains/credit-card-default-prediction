@@ -44,7 +44,7 @@ Generated a training/validation dataset split that ensured to keep the same perc
 Ensuring that all features in a dataset are on a similar scale
 
 ### 5. Baseline Model (no imbalance resampling)
-The first model was performed with no intervention to alleviate the data imbalance. This gave a baseline to measure all other models performed with imbalance techiques against.
+The first model was performed with no intervention to alleviate the data imbalance. This gave a baseline to measure all other models performed with imbalance techniques against.
 ### 5.1 Random Forest
 Random forest was chosen as the primary modeling technique in this case due to the its robustness with imbalanced datasets
 ### 6. Random Resampling Methods for Imbalanced Data
